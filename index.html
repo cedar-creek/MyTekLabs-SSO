@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="username">
+    <button class="login">Login</button>
+    <script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+    <script>
+    document.querySelector('.login').addEventListener('click', function (event) {
+        $('.msg').remove();
+        $('body').append('<div class="msg">logging in...</div>')
+        $.ajax({ 
+            type: 'GET', 
+            url: 'https://www.myteklab.com/logins/loginToken/'+ $('[name="username"]').val() +'/d0ed0208ed5934a31778a5301e708598', 
+            dataType: 'json',
+            success: function (data) { 
+               window.location.href = data.url;
+            }
+        });
+    });
+       
+  
+    
+    </script>
+</body>
+</html>
